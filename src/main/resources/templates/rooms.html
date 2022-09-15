@@ -10,14 +10,17 @@
         <tr>
             <th>ID</th>
             <th>House</th>
+            <th>Student</th>
         </tr>
         <tr th:each="room : ${rooms}">
-            <td th:text="${room.getId()}"></td>
-            <td th:text="${room.getHouseType()}"></td>
+            <td th:text="${room.id}"></td>
+            <td th:text="${room.houseType}"></td>
+            <td th:text="${room.student?.name}"></td>
         </tr>
         <tr th:if="${room}">
-            <td th:text="${room.getId()}"></td>
-            <td th:text="${room.getHouseType()}"></td>
+            <td th:text="${room.id}"></td>
+            <td th:text="${room.houseType}"></td>
+            <td th:text="${room.student?.name}"></td>
         </tr>
     </table>
 </body>

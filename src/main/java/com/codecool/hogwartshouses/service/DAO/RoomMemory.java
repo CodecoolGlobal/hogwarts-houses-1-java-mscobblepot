@@ -39,12 +39,11 @@ public class RoomMemory implements RoomDAO {
     }
 
     @Override
-    public Room update(Long id, HouseType houseType) {
+    public void update(Long id, HouseType houseType) {
         for (Room room : rooms) {
             if (room.getId() == id) {
                 room.setHouseType(houseType);
             }
         }
-        return new Room(id, houseType);
     }
 }

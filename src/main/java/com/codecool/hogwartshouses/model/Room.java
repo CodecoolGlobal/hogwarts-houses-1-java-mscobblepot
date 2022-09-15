@@ -18,4 +18,5 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private HouseType houseType;
+    private Student student;
 }

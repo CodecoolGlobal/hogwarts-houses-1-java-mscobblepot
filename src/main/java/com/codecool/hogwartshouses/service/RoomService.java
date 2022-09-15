@@ -33,7 +33,7 @@ public class RoomService {
         roomDAO.delete(id);
     }
 
-    public Room updateRoom(Long id, HouseType houseType) {
-        return roomDAO.update(id, houseType);
+    public void updateRoom(Long id, HouseType houseType) {
+        roomDAO.update(id, houseType);
     }
 }

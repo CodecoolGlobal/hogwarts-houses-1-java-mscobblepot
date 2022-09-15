@@ -10,5 +10,5 @@ public interface RoomDAO {
     void add(Room room);
     Room get(Long id);
     void delete(Long id);
-    Room update(Long id, HouseType houseType);
+    void update(Long id, HouseType houseType);
 }
