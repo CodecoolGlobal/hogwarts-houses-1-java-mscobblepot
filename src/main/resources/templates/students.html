@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:style="'background: url(/img/background.jpg) no-repeat center center fixed;'">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.getId()}"></td>
+            <td th:text="${student.getName()}"></td>
+        </tr>
+    </table>
+</body>
+</html>
