@@ -15,6 +15,10 @@
             <td th:text="${room.getId()}"></td>
             <td th:text="${room.getHouseType()}"></td>
         </tr>
+        <tr>
+            <td th:text="${room?.getId()}"></td>
+            <td th:text="${room?.getHouseType()}"></td>
+        </tr>
     </table>
 </body>
 </html>

@@ -5,10 +5,7 @@ import com.codecool.hogwartshouses.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -33,5 +30,12 @@ public class RoomController {
     public String addRoom(@RequestBody Room room) {
         roomService.addRoom(room);
         return "redirect:";
+    }
+
+    @GetMapping("/{id}")
+    public String getRoom(@PathVariable("id") Long id, Model model) {
+        Room room = roomService.getRoomById(id);
+        model.addAttribute("room", room);
+        return "rooms";
     }
 }

@@ -23,4 +23,19 @@ public class RoomMemory implements RoomDAO {
     public void add(Room room) {
         rooms.add(room);
     }
+
+    @Override
+    public Room getRoomById(Long id) {
+        return rooms.stream()
+                .filter(room -> id.equals(room.getId()))
+                .findAny()
+                .orElse(null);
+/*        Room roomById = null;
+        for (Room room : rooms) {
+            if (room.getId() == id) {
+                roomById = room;
+            }
+        }
+        return roomById;*/
+    }
 }

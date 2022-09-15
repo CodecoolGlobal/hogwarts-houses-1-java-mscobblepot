@@ -25,4 +25,8 @@ public class RoomService {
     public void addRoom(Room room) {
         roomDAO.add(room);
     }
+
+    public Room getRoomById(Long id) {
+        return roomDAO.getRoomById(id);
+    }
 }

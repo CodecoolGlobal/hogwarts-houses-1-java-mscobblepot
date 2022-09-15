@@ -7,4 +7,5 @@ import java.util.Set;
 public interface RoomDAO {
     Set<Room> getAll();
     void add(Room room);
+    Room getRoomById(Long id);
 }
