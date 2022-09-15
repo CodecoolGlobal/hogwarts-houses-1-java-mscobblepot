@@ -27,21 +27,27 @@ public class RoomController {
     }
 
     @PostMapping
-    public String addRoom(@RequestBody Room room) {
+    public String addRoom(@RequestBody Room room, Model model) {
         roomService.addRoom(room);
-        return "redirect:";
+        return getRooms(model);
     }
 
     @GetMapping("/{id}")
     public String getRoom(@PathVariable("id") Long id, Model model) {
-        Room room = roomService.getRoomById(id);
+        Room room = roomService.getRoom(id);
         model.addAttribute("room", room);
         return "rooms";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRoom(@PathVariable("id") Long id) {
+    public String deleteRoom(@PathVariable("id") Long id, Model model) {
         roomService.deleteRoom(id);
-        return "redirect:";
+        return getRooms(model);
+    }
+
+    @PutMapping("/{id}")
+    public String updateRoom(@PathVariable("id") Long id, @RequestBody Room updatedRoom, Model model) {
+        roomService.updateRoom(id, updatedRoom.getHouseType());
+        return getRooms(model);
     }
 }

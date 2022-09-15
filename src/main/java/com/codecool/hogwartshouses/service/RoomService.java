@@ -6,7 +6,6 @@ import com.codecool.hogwartshouses.service.DAO.RoomDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
 import java.util.Set;
 
 @Service
@@ -26,11 +25,15 @@ public class RoomService {
         roomDAO.add(room);
     }
 
-    public Room getRoomById(Long id) {
+    public Room getRoom(Long id) {
         return roomDAO.get(id);
     }
 
     public void deleteRoom(Long id) {
         roomDAO.delete(id);
+    }
+
+    public Room updateRoom(Long id, HouseType houseType) {
+        return roomDAO.update(id, houseType);
     }
 }

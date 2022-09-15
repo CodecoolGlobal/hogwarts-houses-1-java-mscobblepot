@@ -1,6 +1,7 @@
 package com.codecool.hogwartshouses.service.DAO;
 
 import com.codecool.hogwartshouses.model.Room;
+import com.codecool.hogwartshouses.model.types.HouseType;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
@@ -35,5 +36,15 @@ public class RoomMemory implements RoomDAO {
     @Override
     public void delete(Long id) {
         rooms.removeIf(room -> room.getId() == id);
+    }
+
+    @Override
+    public Room update(Long id, HouseType houseType) {
+        for (Room room : rooms) {
+            if (room.getId() == id) {
+                room.setHouseType(houseType);
+            }
+        }
+        return new Room(id, houseType);
     }
 }
