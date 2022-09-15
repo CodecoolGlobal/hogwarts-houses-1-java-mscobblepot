@@ -36,4 +36,7 @@ public class RoomService {
     public void updateRoom(Long id, HouseType houseType) {
         roomDAO.update(id, houseType);
     }
+    public Set<Room> getAvailableRooms() {
+       return  roomDAO.getAllAvailable();
+    }
 }

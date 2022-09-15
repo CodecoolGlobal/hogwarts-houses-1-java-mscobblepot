@@ -50,4 +50,11 @@ public class RoomController {
         roomService.updateRoom(id, updatedRoom.getHouseType());
         return getRooms(model);
     }
+
+    @GetMapping("/available")
+    public String getAvailableRooms(Model model) {
+        Set<Room> availableRooms = roomService.getAvailableRooms();
+        model.addAttribute("rooms", availableRooms);
+        return "rooms";
+    }
 }
