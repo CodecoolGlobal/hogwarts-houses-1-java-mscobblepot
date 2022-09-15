@@ -22,14 +22,14 @@ public class RoomCreator {
     }
 
     public void initialize() {
-        Student Harry = new Student(3, "Harry Potter");
-        Student Luna = new Student(4, "Luna Lovegood");
-        studentMemory.add(Harry);
-        studentMemory.add(Luna);
+        Student Hermione = new Student(1, "Hermione Granger");
+        Student Malfoy = new Student(2, "Draco Malfoy");
+        studentMemory.add(Hermione);
+        studentMemory.add(Malfoy);
 
-        Room GryffindorRoom = new Room(1, HouseType.GRYFFINDOR, Harry);
-        Room SlytherinRoom = new Room(2, HouseType.SLYTHERIN, null);
-        Room HufflepuffRoom = new Room(3, HouseType.HUFFLEPUFF, Luna);
+        Room GryffindorRoom = new Room(1, HouseType.GRYFFINDOR, Hermione);
+        Room SlytherinRoom = new Room(2, HouseType.SLYTHERIN, Malfoy);
+        Room HufflepuffRoom = new Room(3, HouseType.HUFFLEPUFF, null);
         Room RavenclawRoom = new Room(4, HouseType.RAVENCLAW, null);
         roomMemory.add(GryffindorRoom);
         roomMemory.add(SlytherinRoom);
