@@ -15,9 +15,9 @@
             <td th:text="${room.getId()}"></td>
             <td th:text="${room.getHouseType()}"></td>
         </tr>
-        <tr>
-            <td th:text="${room?.getId()}"></td>
-            <td th:text="${room?.getHouseType()}"></td>
+        <tr th:if="${room}">
+            <td th:text="${room.getId()}"></td>
+            <td th:text="${room.getHouseType()}"></td>
         </tr>
     </table>
 </body>
