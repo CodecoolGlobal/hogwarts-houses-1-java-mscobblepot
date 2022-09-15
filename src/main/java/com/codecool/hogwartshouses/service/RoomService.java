@@ -11,8 +11,8 @@ import java.util.Set;
 
 @Service
 public class RoomService {
-
     private final RoomDAO roomDAO;
+
     @Autowired
     public RoomService(RoomDAO roomDAO) {
         this.roomDAO = roomDAO;
@@ -27,6 +27,10 @@ public class RoomService {
     }
 
     public Room getRoomById(Long id) {
-        return roomDAO.getRoomById(id);
+        return roomDAO.get(id);
+    }
+
+    public void deleteRoom(Long id) {
+        roomDAO.delete(id);
     }
 }

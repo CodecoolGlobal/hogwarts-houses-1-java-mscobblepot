@@ -25,17 +25,15 @@ public class RoomMemory implements RoomDAO {
     }
 
     @Override
-    public Room getRoomById(Long id) {
+    public Room get(Long id) {
         return rooms.stream()
                 .filter(room -> id.equals(room.getId()))
                 .findAny()
                 .orElse(null);
-/*        Room roomById = null;
-        for (Room room : rooms) {
-            if (room.getId() == id) {
-                roomById = room;
-            }
-        }
-        return roomById;*/
+    }
+
+    @Override
+    public void delete(Long id) {
+        rooms.removeIf(room -> room.getId() == id);
     }
 }
