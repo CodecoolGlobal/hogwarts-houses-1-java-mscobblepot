@@ -57,4 +57,11 @@ public class RoomController {
         model.addAttribute("rooms", availableRooms);
         return "rooms";
     }
+
+    @GetMapping("/rat-owners")
+    public String getRoomsForRatOwners(Model model) {
+        Set<Room> roomsForRatOwners = roomService.getRoomsForRatOwners();
+        model.addAttribute("rooms", roomsForRatOwners);
+        return "rooms";
+    }
 }

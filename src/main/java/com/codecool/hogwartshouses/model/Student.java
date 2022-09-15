@@ -1,5 +1,6 @@
 package com.codecool.hogwartshouses.model;
 
+import com.codecool.hogwartshouses.model.types.PetType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
@@ -17,4 +18,5 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
+    private PetType petType;
 }

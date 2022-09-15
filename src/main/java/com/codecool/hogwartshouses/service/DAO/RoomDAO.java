@@ -12,4 +12,5 @@ public interface RoomDAO {
     void delete(Long id);
     void update(Long id, HouseType houseType);
     Set<Room> getAllAvailable();
+    Set<Room> getAllForRatOwners();
 }

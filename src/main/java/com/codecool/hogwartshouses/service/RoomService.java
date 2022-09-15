@@ -37,6 +37,10 @@ public class RoomService {
         roomDAO.update(id, houseType);
     }
     public Set<Room> getAvailableRooms() {
-       return  roomDAO.getAllAvailable();
+       return roomDAO.getAllAvailable();
+    }
+
+    public Set<Room> getRoomsForRatOwners() {
+        return roomDAO.getAllForRatOwners();
     }
 }

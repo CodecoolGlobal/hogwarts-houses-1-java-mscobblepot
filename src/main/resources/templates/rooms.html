@@ -11,16 +11,19 @@
             <th>ID</th>
             <th>House</th>
             <th>Student</th>
+            <th >Pet</th>
         </tr>
         <tr th:each="room : ${rooms}">
             <td th:text="${room.id}"></td>
             <td th:text="${room.houseType}"></td>
             <td th:text="${room.student?.name}"></td>
+            <td th:text="${room.student?.petType}"></td>
         </tr>
         <tr th:if="${room}">
             <td th:text="${room.id}"></td>
             <td th:text="${room.houseType}"></td>
             <td th:text="${room.student?.name}"></td>
+            <td th:text="${room.student?.petType}"></td>
         </tr>
     </table>
 </body>
