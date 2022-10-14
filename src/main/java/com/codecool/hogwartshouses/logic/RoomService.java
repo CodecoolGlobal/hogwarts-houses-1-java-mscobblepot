@@ -1,7 +1,7 @@
-package com.codecool.hogwartshouses.service;
+package com.codecool.hogwartshouses.logic;
 
-import com.codecool.hogwartshouses.model.Room;
-import com.codecool.hogwartshouses.model.types.HouseType;
+import com.codecool.hogwartshouses.persistence.entity.Room;
+import com.codecool.hogwartshouses.data.House;
 import com.codecool.hogwartshouses.service.DAO.RoomDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class RoomService {
         roomDAO.delete(id);
     }
 
-    public void updateRoom(Long id, HouseType houseType) {
+    public void updateRoom(Long id, House houseType) {
         roomDAO.update(id, houseType);
     }
     public Set<Room> getAvailableRooms() {

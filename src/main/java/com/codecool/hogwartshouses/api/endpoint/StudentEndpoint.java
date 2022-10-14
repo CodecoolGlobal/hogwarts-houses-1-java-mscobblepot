@@ -1,7 +1,7 @@
-package com.codecool.hogwartshouses.controller;
+package com.codecool.hogwartshouses.api.endpoint;
 
-import com.codecool.hogwartshouses.model.Student;
-import com.codecool.hogwartshouses.service.StudentService;
+import com.codecool.hogwartshouses.persistence.entity.Student;
+import com.codecool.hogwartshouses.logic.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +14,11 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/students")
-public class StudentController {
+public class StudentEndpoint {
     private final StudentService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentEndpoint(StudentService studentService) {
         this.studentService = studentService;
     }
 

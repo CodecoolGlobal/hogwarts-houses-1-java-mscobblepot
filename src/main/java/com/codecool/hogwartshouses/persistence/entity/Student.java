@@ -1,6 +1,6 @@
-package com.codecool.hogwartshouses.model;
+package com.codecool.hogwartshouses.persistence.entity;
 
-import com.codecool.hogwartshouses.model.types.HouseType;
+import com.codecool.hogwartshouses.data.Pet;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
@@ -13,10 +13,10 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Room {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private HouseType houseType;
-    private Student student;
+    private String name;
+    private Pet petType;
 }

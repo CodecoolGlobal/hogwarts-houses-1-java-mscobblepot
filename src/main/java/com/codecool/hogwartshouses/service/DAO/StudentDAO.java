@@ -1,6 +1,6 @@
 package com.codecool.hogwartshouses.service.DAO;
 
-import com.codecool.hogwartshouses.model.Student;
+import com.codecool.hogwartshouses.persistence.entity.Student;
 
 import java.util.Set;
 

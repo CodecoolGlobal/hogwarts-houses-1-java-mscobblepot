@@ -1,7 +1,7 @@
-package com.codecool.hogwartshouses.controller;
+package com.codecool.hogwartshouses.api.endpoint;
 
-import com.codecool.hogwartshouses.model.Room;
-import com.codecool.hogwartshouses.service.RoomService;
+import com.codecool.hogwartshouses.persistence.entity.Room;
+import com.codecool.hogwartshouses.logic.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +11,11 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/rooms")
-public class RoomController {
+public class RoomEndpoint {
     private final RoomService roomService;
 
     @Autowired
-    public RoomController(RoomService roomService) {
+    public RoomEndpoint(RoomService roomService) {
         this.roomService = roomService;
     }
 

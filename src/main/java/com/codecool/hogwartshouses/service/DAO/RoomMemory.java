@@ -1,8 +1,8 @@
 package com.codecool.hogwartshouses.service.DAO;
 
-import com.codecool.hogwartshouses.model.Room;
-import com.codecool.hogwartshouses.model.types.HouseType;
-import com.codecool.hogwartshouses.model.types.PetType;
+import com.codecool.hogwartshouses.persistence.entity.Room;
+import com.codecool.hogwartshouses.data.House;
+import com.codecool.hogwartshouses.data.Pet;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
@@ -41,7 +41,7 @@ public class RoomMemory implements RoomDAO {
     }
 
     @Override
-    public void update(Long id, HouseType houseType) {
+    public void update(Long id, House houseType) {
         for (Room room : rooms) {
             if (room.getId() == id) {
                 room.setHouseType(houseType);
@@ -60,7 +60,7 @@ public class RoomMemory implements RoomDAO {
     public Set<Room> getAllForRatOwners() {
         return rooms.stream()
                 .filter(room -> room.getStudent() != null)
-                .filter(room -> room.getStudent().getPetType() != PetType.CAT && room.getStudent().getPetType() != PetType.OWL)
+                .filter(room -> room.getStudent().getPetType() != Pet.CAT && room.getStudent().getPetType() != Pet.OWL)
                 .collect(Collectors.toSet());
     }
 }
