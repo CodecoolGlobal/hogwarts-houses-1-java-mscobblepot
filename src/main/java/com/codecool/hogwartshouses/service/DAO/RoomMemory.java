@@ -44,14 +44,14 @@ public class RoomMemory implements RoomDAO {
     public void update(Long id, House houseType) {
         for (Room room : rooms) {
             if (room.getId() == id) {
-                room.setHouseType(houseType);
+                room.setHouse(houseType);
             }
         }
     }
 
     @Override
     public Set<Room> getAllAvailable() {
-        return rooms.stream()
+    return rooms.stream()
                 .filter(room -> room.getStudent() == null)
                 .collect(Collectors.toSet());
     }
@@ -60,7 +60,7 @@ public class RoomMemory implements RoomDAO {
     public Set<Room> getAllForRatOwners() {
         return rooms.stream()
                 .filter(room -> room.getStudent() != null)
-                .filter(room -> room.getStudent().getPetType() != Pet.CAT && room.getStudent().getPetType() != Pet.OWL)
+                .filter(room -> room.getStudent().getPet() != Pet.CAT && room.getStudent().getPet() != Pet.OWL)
                 .collect(Collectors.toSet());
     }
 }

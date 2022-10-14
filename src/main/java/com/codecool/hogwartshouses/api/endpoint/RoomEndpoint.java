@@ -47,7 +47,7 @@ public class RoomEndpoint {
 
     @PutMapping("/{id}")
     public String updateRoom(@PathVariable("id") Long id, @RequestBody Room updatedRoom, Model model) {
-        roomService.updateRoom(id, updatedRoom.getHouseType());
+        roomService.updateRoom(id, updatedRoom.getHouse());
         return getRooms(model);
     }
 

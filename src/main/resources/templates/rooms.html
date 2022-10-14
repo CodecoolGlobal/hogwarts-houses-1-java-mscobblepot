@@ -15,15 +15,15 @@
         </tr>
         <tr th:each="room : ${rooms}">
             <td th:text="${room.id}"></td>
-            <td th:text="${room.houseType}"></td>
+            <td th:text="${room.house}"></td>
             <td th:text="${room.student?.name}"></td>
-            <td th:text="${room.student?.petType}"></td>
+            <td th:text="${room.student?.pet}"></td>
         </tr>
         <tr th:if="${room}">
             <td th:text="${room.id}"></td>
-            <td th:text="${room.houseType}"></td>
+            <td th:text="${room.house}"></td>
             <td th:text="${room.student?.name}"></td>
-            <td th:text="${room.student?.petType}"></td>
+            <td th:text="${room.student?.pet}"></td>
         </tr>
     </table>
 </body>
