@@ -3,19 +3,16 @@ package com.codecool.hogwartshouses.logic;
 import com.codecool.hogwartshouses.persistence.entity.Room;
 import com.codecool.hogwartshouses.data.House;
 import com.codecool.hogwartshouses.service.DAO.RoomDAO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class RoomService {
     private final RoomDAO roomDAO;
-
-    @Autowired
-    public RoomService(RoomDAO roomDAO) {
-        this.roomDAO = roomDAO;
-    }
 
     public Set<Room> getRooms(){
         return roomDAO.getAll();
