@@ -1,43 +1,40 @@
 package com.codecool.hogwartshouses.logic;
 
+import com.codecool.hogwartshouses.data.Pet;
 import com.codecool.hogwartshouses.persistence.entity.Room;
-import com.codecool.hogwartshouses.data.House;
-import com.codecool.hogwartshouses.service.DAO.RoomDAO;
+import com.codecool.hogwartshouses.persistence.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class RoomService {
-    private final RoomDAO roomDAO;
+    private final RoomRepository roomRepository;
 
-    public Set<Room> getRooms(){
-        return roomDAO.getAll();
+    public List<Room> getRooms(){
+        return roomRepository.findAll();
     }
 
-    public void addRoom(Room room) {
-        roomDAO.add(room);
+    public void saveRoom(Room room) {
+        roomRepository.save(room);
     }
 
-    public Room getRoom(Long id) {
-        return roomDAO.get(id);
+    public Optional<Room> getRoom(Long id) {
+        return roomRepository.findById(id);
     }
 
     public void deleteRoom(Long id) {
-        roomDAO.delete(id);
+        roomRepository.deleteById(id);
     }
 
-    public void updateRoom(Long id, House houseType) {
-        roomDAO.update(id, houseType);
-    }
-    public Set<Room> getAvailableRooms() {
-       return roomDAO.getAllAvailable();
+    public List<Room> getAvailableRooms() {
+        return roomRepository.findByStudentIsNull();
     }
 
-    public Set<Room> getRoomsForRatOwners() {
-        return roomDAO.getAllForRatOwners();
+    public List<Room> getRoomsForRatOwners() {
+        return roomRepository.findByStudentIsNullOrStudentIsNotNullAndStudentPetIsNotIn(List.of(Pet.CAT, Pet.OWL));
     }
 }
