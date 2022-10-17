@@ -2,41 +2,45 @@ package com.codecool.hogwartshouses.runner;
 
 import com.codecool.hogwartshouses.persistence.entity.Room;
 import com.codecool.hogwartshouses.persistence.entity.Student;
-import com.codecool.hogwartshouses.data.House;
-import com.codecool.hogwartshouses.data.Pet;
 import com.codecool.hogwartshouses.persistence.repository.RoomRepository;
 import com.codecool.hogwartshouses.persistence.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+import java.util.List;
+
+@Configuration
+@ConfigurationProperties("datasets")
 public class DatabasePopulator {
+    private List<Room> rooms;
+    private List<Student> students;
 
-    private final RoomRepository roomRepository;
-    private final StudentRepository studentRepository;
+    @Bean
+    ApplicationRunner populator(StudentRepository studentRepository, RoomRepository roomRepository) {
+        return args -> {
+            roomRepository.saveAll(rooms);
+            studentRepository.saveAll(students);
 
-    @Autowired
-    public DatabasePopulator(RoomRepository roomRepository, StudentRepository studentRepository) {
-        this.roomRepository = roomRepository;
-        this.studentRepository = studentRepository;
-        initialize();
+            Room room1 = rooms.get(0);
+            Room room2 = rooms.get(1);
+            Student student1 = students.get(0);
+            Student student2 = students.get(1);
+
+            room1.setStudent(student1);
+            room2.setStudent(student2);
+
+            roomRepository.save(room1);
+            roomRepository.save(room2);
+        };
     }
 
-    public void initialize() {
-        Student Hermione = new Student(1, "Hermione Granger", Pet.CAT);
-        Student Malfoy = new Student(2, "Draco Malfoy", Pet.OWL);
-        Student Luna = new Student(3, "Luna Lovegood", Pet.NONE);
-        studentRepository.save(Hermione);
-        studentRepository.save(Malfoy);
-        studentRepository.save(Luna);
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
 
-        Room GryffindorRoom = new Room(1, House.GRYFFINDOR, Hermione);
-        Room SlytherinRoom = new Room(2, House.SLYTHERIN, Malfoy);
-        Room HufflepuffRoom = new Room(3, House.HUFFLEPUFF, Luna);
-        Room RavenclawRoom = new Room(4, House.RAVENCLAW, null);
-        roomRepository.save(GryffindorRoom);
-        roomRepository.save(SlytherinRoom);
-        roomRepository.save(HufflepuffRoom);
-        roomRepository.save(RavenclawRoom);
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }
