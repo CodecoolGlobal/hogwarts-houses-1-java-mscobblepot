@@ -1,23 +1,22 @@
 package com.codecool.hogwartshouses.logic;
 
 import com.codecool.hogwartshouses.persistence.entity.Student;
-import com.codecool.hogwartshouses.service.DAO.StudentDAO;
+import com.codecool.hogwartshouses.persistence.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class StudentService {
-    private final StudentDAO studentDAO;
+    private final StudentRepository studentRepository;
 
-    public Set<Student> getStudents(){
-        return studentDAO.getAll();
+    public List<Student> getStudents(){
+        return studentRepository.findAll();
     }
 
-    public void addRoom(Student student) {
-        studentDAO.add(student);
+    public void addStudent(Student student) {
+        studentRepository.save(student);
     }
 }

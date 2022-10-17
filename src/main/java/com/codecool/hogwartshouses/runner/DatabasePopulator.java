@@ -4,8 +4,8 @@ import com.codecool.hogwartshouses.persistence.entity.Room;
 import com.codecool.hogwartshouses.persistence.entity.Student;
 import com.codecool.hogwartshouses.data.House;
 import com.codecool.hogwartshouses.data.Pet;
+import com.codecool.hogwartshouses.persistence.repository.StudentRepository;
 import com.codecool.hogwartshouses.service.DAO.RoomMemory;
-import com.codecool.hogwartshouses.service.DAO.StudentMemory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 public class DatabasePopulator {
 
     private final RoomMemory roomMemory;
-    private final StudentMemory studentMemory;
+    private final StudentRepository studentRepository;
 
     @Autowired
-    public DatabasePopulator(RoomMemory roomMemory, StudentMemory studentMemory) {
+    public DatabasePopulator(RoomMemory roomMemory, StudentRepository studentRepository) {
         this.roomMemory = roomMemory;
-        this.studentMemory = studentMemory;
+        this.studentRepository = studentRepository;
         initialize();
     }
 
@@ -26,9 +26,9 @@ public class DatabasePopulator {
         Student Hermione = new Student(1, "Hermione Granger", Pet.CAT);
         Student Malfoy = new Student(2, "Draco Malfoy", Pet.OWL);
         Student Luna = new Student(3, "Luna Lovegood", Pet.NONE);
-        studentMemory.add(Hermione);
-        studentMemory.add(Malfoy);
-        studentMemory.add(Luna);
+        studentRepository.save(Hermione);
+        studentRepository.save(Malfoy);
+        studentRepository.save(Luna);
 
         Room GryffindorRoom = new Room(1, House.GRYFFINDOR, Hermione);
         Room SlytherinRoom = new Room(2, House.SLYTHERIN, Malfoy);
